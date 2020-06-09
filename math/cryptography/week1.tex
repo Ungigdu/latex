@@ -1,10 +1,13 @@
 \documentclass{article}
-\begin{document}
+
+\begin{document}\
+
+
 \section{An import property of XOR}
 Y is a  rand var over $\{0,1\}^n$, X is an independent uniform var over $\{0,1\}^n$
 Then Z:=$X \oplus Y$ is uniform var over  $\{0,1\}^n$ 
 
-\section{Symmetic ciphers:  defination}
+\section{Symmetric ciphers:  definition}
 A cipher defined over (K, M, C) is a pair of "efficient" algs (E,D)
 Where $E: K \times M\rightarrow C, D: K \times C \rightarrow M$
 s.t. $\forall m \in M$ D(k, E(K,M)) == M
@@ -12,6 +15,23 @@ s.t. $\forall m \in M$ D(k, E(K,M)) == M
 \section{Information theoretic security}
 A cipher $\left(E,D\right)$ over $\left(K, M, C\right)$ has perfect secrecy if 
 $\forall m_0, m_1 \in M, \left(|m_0|==|m_1|\right)$, and $\forall c \in C$
-$Pr[E(k,m_0)==Pr[E(k,m_1)]]$ where k $\leftarrow$rand K
+$Pr[E(k,m_0)==Pr[E(k,m_1)]]$ where k $\leftarrow rand$ K
+
+\section{PRG must be unpredictable}
+We say $ G:K \rightarrow \{0,1\}^n $ is predictable if:
+$\exists$ efficient alg $\alpha$ and $\exists i , 1\leq i \leq n-1$  s.t.
+$Pr[\alpha(G(k)|_{1,...,i}) = G(k)|_{i+1}] \geq \frac{1}{2} + \epsilon$
+
+\section{Secure PRGs: crypto definition}
+Def we say that G:K $\rightarrow \{0,1\}^n$ is a secure PRG if
+$\forall$ "eff" stat test A : $Adv_{PRG}[A,G]$ is "negligible"
+
+\section{PRF: pseudo random function}
+Def: let F: $K\times X\rightarrow Y$ be a PRF
+Funs[X,Y]: the set of all functions from X to Y
+$S_F$ = $\{F(K,\bullet)\;s.t.\;k\in K\} \subseteq Funs[X,Y]$ \newline
+Intuition: a PRF is secure if
+a random function in Funs[X,Y] is indistinguishable from a random function in $S_F$
+
 \end{document}
 
